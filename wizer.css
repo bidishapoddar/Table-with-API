@@ -1,0 +1,28 @@
+.card-1 {
+    width: 94%;
+    height: 90%;
+    border: 1px solid rgba(75, 75, 77, 0.082);
+    border-width: 10;
+    box-sizing: border-box;
+    margin-left: 3%;
+    margin-top: 2%;
+    
+  }
+  .card-head{
+      background-color: rgba(98, 98, 104, 0.301);
+      height: 60px;
+      font-size: .9rem;
+      font-weight: 700;
+      padding-left: 1%;
+      padding-top: 1.2%;
+      color: rgb(109, 109, 116);
+  }
+  .card-body{
+      padding:2%;
+  }
+  .row-1{
+      width:1000px;
+  }
+  .col-md-4{
+      padding-top:1.5%;
+  }
