@@ -9,27 +9,33 @@
 	
 	
 	if($_POST['type']==2){
+	
 		$result=$_POST['result'];
-		for ($i = 0; $i <= count($result); $i+=1){
+		$result=json_decode($result);//Added//
 		
-				$flag=$result[$i][flag];
-				$capital=$result[$i][capital];
-				$name=$result[$i][name];
-				$nativeName=$result[$i][nativeName];	
-				$region=$result[$i][region];
+		$length_of_array=count($result);//Added//
+		
+		//Modified////////////////
+		for ($i = 0; $i < $length_of_array; $i+=1) {
+				
+				$flag=$result[$i]->flag;
+				$capital=$result[$i]->capital;
+				$name=$result[$i]->name;
+				$nativeName=$result[$i]->nativeName;	
+				$region=$result[$i]->region;
+		///////////////////////////
 				$id = $i+1;
 				
 				$sql = "INSERT INTO `api_details`( `id`, `flag`, `name`, `capital` ,`nativeName`, `region`) 
 					VALUES('$id', '$flag' , '$name' , '$capital' , '$nativeName' , '$region')";
-				if ($conn->query($sql) === TRUE)
-				{
-					echo json_encode(array("statusCode"=>200));
-				} 
-				else 
-				{
-					echo json_encode(array("statusCode"=>201));
-				}
-		  	}
+					if (mysqli_query($conn, $sql)) {
+						echo json_encode(array("statusCode"=>200));
+					} 
+					else {
+						echo json_encode(array("statusCode"=>201));
+					}
+			  }
+			  
 		$conn->close();
 	}
 ?>
